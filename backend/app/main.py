@@ -24,7 +24,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173", # For local development
-        "https://chat-ai-chi-umber.vercel.app/login" # Replace with your actual Vercel URL!
+        "https://chat-ai-chi-umber.vercel.app" # Replace with your actual Vercel URL!
     ],
     allow_credentials=True,
     allow_methods=["*"],
