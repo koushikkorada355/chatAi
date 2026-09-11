@@ -1,0 +1,20 @@
+CREATE TABLE
+psql:<stdin>:14: NOTICE:  relation "checkpoints" already exists, skipping
+CREATE TABLE
+psql:<stdin>:24: NOTICE:  relation "checkpoint_blobs" already exists, skipping
+CREATE TABLE
+psql:<stdin>:36:CREATE TABLE
+ NOTICE:  relation "checkpoint_writes" already exists, skipping
+ALTER TABLE
+ ?column? 
+----------
+        1
+(1 row)
+
+psql:<stdin>:43: NOTICE:  relation "checkpoints_thread_id_idx" already exists, skipping
+CREATE INDEX
+psql:<stdin>:44: NOTICE:  relation "checkpoint_blobs_thread_id_idx" already exists, skipping
+CREATE INDEX
+psql:<stdin>:45: NOTICE:  relation "checkpoint_writes_thread_id_idx" already exists, skipping
+CREATE INDEX
+ALTER TABLE

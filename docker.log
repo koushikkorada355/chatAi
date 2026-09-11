@@ -1,0 +1,233 @@
+Creating network "ai-chatbot_default" with the default driver
+Building backend
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 343B done
+#1 DONE 0.0s
+
+#2 [auth] library/python:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 2.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 9.53kB 0.0s done
+#6 DONE 0.1s
+
+#7 [3/5] COPY requirements.txt /code/
+#7 CACHED
+
+#8 [2/5] WORKDIR /code
+#8 CACHED
+
+#9 [4/5] RUN pip install --no-cache-dir -r requirements.txt
+#9 CACHED
+
+#10 [5/5] COPY . /code/
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers 0.1s done
+#11 writing image sha256:47ab5a43b0ccb43fd048f179e9988d7bc7a749f8902f2f37a90a1877760ffad3 done
+#11 naming to docker.io/library/ai-chatbot_backend 0.0s done
+#11 DONE 0.1s
+Building frontend
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 160B done
+#1 DONE 0.0s
+
+#2 [auth] library/node:pull token for registry-1.docker.io
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:18-alpine
+#3 DONE 1.4s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 241.53kB 0.5s done
+#6 DONE 0.5s
+
+#7 [2/5] WORKDIR /app
+#7 CACHED
+
+#8 [3/5] COPY package*.json ./
+#8 CACHED
+
+#9 [4/5] RUN npm install
+#9 CACHED
+
+#10 [5/5] COPY . .
+#10 CACHED
+
+#11 exporting to image
+#11 exporting layers done
+#11 writing image sha256:3889b0e70dfd0b1e3cb5ee6d928036f4c086b1cbab04abef0cad00e277393282 done
+#11 naming to docker.io/library/ai-chatbot_frontend 0.0s done
+#11 DONE 0.1s
+Creating ai_postgres ... 
+Creating ai_postgres ... done
+Creating ai_backend  ... 
+Creating ai_backend  ... done
+Creating ai_frontend ... 
+Creating ai_frontend ... done
+Attaching to ai_postgres, ai_backend, ai_frontend
+[36mai_backend  |[0m INFO:     Will watch for changes in these directories: ['/code']
+[36mai_backend  |[0m INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+[36mai_backend  |[0m INFO:     Started reloader process [1] using WatchFiles
+[32mai_postgres |[0m 
+[32mai_postgres |[0m PostgreSQL Database directory appears to contain a database; Skipping initialization
+[32mai_postgres |[0m 
+[32mai_postgres |[0m 2026-09-11 07:14:16.777 UTC [1] LOG:  starting PostgreSQL 16.15 (Debian 16.15-1.pgdg12+2) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14+deb12u1) 12.2.0, 64-bit
+[32mai_postgres |[0m 2026-09-11 07:14:16.778 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+[32mai_postgres |[0m 2026-09-11 07:14:16.778 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+[32mai_postgres |[0m 2026-09-11 07:14:16.790 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+[32mai_postgres |[0m 2026-09-11 07:14:16.808 UTC [29] LOG:  database system was shut down at 2026-09-11 07:13:17 UTC
+[32mai_postgres |[0m 2026-09-11 07:14:16.825 UTC [1] LOG:  database system is ready to accept connections
+[33mai_frontend |[0m 
+[33mai_frontend |[0m > chatai-frontend@1.0.0 dev
+[33mai_frontend |[0m > vite --host 0.0.0.0 --port 5173
+[33mai_frontend |[0m 
+[33mai_frontend |[0m 
+[33mai_frontend |[0m   VITE v5.4.21  ready in 430 ms
+[33mai_frontend |[0m 
+[33mai_frontend |[0m   ➜  Local:   http://localhost:5173/
+[33mai_frontend |[0m   ➜  Network: http://172.20.0.4:5173/
+[36mai_backend  |[0m INFO:     Started server process [8]
+[36mai_backend  |[0m INFO:     Waiting for application startup.
+[36mai_backend  |[0m 2026-09-11 07:14:26,805 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[36mai_backend  |[0m 2026-09-11 07:14:26,805 INFO sqlalchemy.engine.Engine [raw sql] {}
+[36mai_backend  |[0m 2026-09-11 07:14:26,816 INFO sqlalchemy.engine.Engine select current_schema()
+[36mai_backend  |[0m 2026-09-11 07:14:26,816 INFO sqlalchemy.engine.Engine [raw sql] {}
+[36mai_backend  |[0m 2026-09-11 07:14:26,818 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[36mai_backend  |[0m 2026-09-11 07:14:26,818 INFO sqlalchemy.engine.Engine [raw sql] {}
+[36mai_backend  |[0m 2026-09-11 07:14:26,831 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:14:26,831 INFO sqlalchemy.engine.Engine SELECT 1
+[36mai_backend  |[0m 2026-09-11 07:14:26,831 INFO sqlalchemy.engine.Engine [generated in 0.00032s] {}
+[36mai_backend  |[0m 2026-09-11 07:14:26,832 INFO sqlalchemy.engine.Engine ROLLBACK
+[36mai_backend  |[0m ✅ Database connection successful!
+[36mai_backend  |[0m 2026-09-11 07:14:26,833 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:14:26,838 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+[36mai_backend  |[0m FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+[36mai_backend  |[0m WHERE pg_catalog.pg_class.relname = %(table_name)s::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s::VARCHAR, %(param_2)s::VARCHAR, %(param_3)s::VARCHAR, %(param_4)s::VARCHAR, %(param_5)s::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:14:26,839 INFO sqlalchemy.engine.Engine [generated in 0.00041s] {'table_name': 'users', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+[36mai_backend  |[0m 2026-09-11 07:14:26,843 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+[36mai_backend  |[0m FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+[36mai_backend  |[0m WHERE pg_catalog.pg_class.relname = %(table_name)s::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s::VARCHAR, %(param_2)s::VARCHAR, %(param_3)s::VARCHAR, %(param_4)s::VARCHAR, %(param_5)s::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:14:26,843 INFO sqlalchemy.engine.Engine [cached since 0.004912s ago] {'table_name': 'conversations', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+[36mai_backend  |[0m 2026-09-11 07:14:26,845 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+[36mai_backend  |[0m FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+[36mai_backend  |[0m WHERE pg_catalog.pg_class.relname = %(table_name)s::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s::VARCHAR, %(param_2)s::VARCHAR, %(param_3)s::VARCHAR, %(param_4)s::VARCHAR, %(param_5)s::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:14:26,845 INFO sqlalchemy.engine.Engine [cached since 0.006555s ago] {'table_name': 'messages', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+[36mai_backend  |[0m 2026-09-11 07:14:26,846 INFO sqlalchemy.engine.Engine COMMIT
+[36mai_backend  |[0m INFO:     Application startup complete.
+Exception in thread Thread-10 (watch_events):
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3/dist-packages/compose/cli/log_printer.py", line 202, in watch_events
+    for event in event_stream:
+  File "/usr/lib/python3/dist-packages/compose/project.py", line 626, in yield_loop
+    yield build_container_event(event)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/compose/project.py", line 594, in build_container_event
+    container = Container.from_id(self.client, event['id'])
+                                               ~~~~~^^^^^^
+KeyError: 'id'
+[36mai_backend  |[0m ✅ Database tables created successfully!
+[36mai_backend  |[0m INFO:     172.20.0.1:52318 - "POST /conversations/13/chat HTTP/1.1" 401 Unauthorized
+[36mai_backend  |[0m INFO:     172.20.0.1:33060 - "POST /signup HTTP/1.1" 404 Not Found
+[36mai_backend  |[0m 2026-09-11 07:15:21,506 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:15:21,522 INFO sqlalchemy.engine.Engine SELECT users.id, users.name, users.email, users.password_hash, users.created_at 
+[36mai_backend  |[0m FROM users 
+[36mai_backend  |[0m WHERE users.email = %(email_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:15:21,523 INFO sqlalchemy.engine.Engine [generated in 0.00074s] {'email_1': 'test@example.com'}
+[36mai_backend  |[0m 2026-09-11 07:15:22,084 INFO sqlalchemy.engine.Engine INSERT INTO users (name, email, password_hash) VALUES (%(name)s::VARCHAR, %(email)s::VARCHAR, %(password_hash)s::VARCHAR) RETURNING users.id, users.created_at
+[36mai_backend  |[0m 2026-09-11 07:15:22,084 INFO sqlalchemy.engine.Engine [generated in 0.00033s] {'name': 'Test User', 'email': 'test@example.com', 'password_hash': '$2b$12$j1JV7V.UA6UZZD9Vb8MSf.QoV/mjWsEJ/6XIcIu4FT7Po7mXdQpRm'}
+[36mai_backend  |[0m 2026-09-11 07:15:22,088 INFO sqlalchemy.engine.Engine COMMIT
+[36mai_backend  |[0m 2026-09-11 07:15:22,093 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:15:22,095 INFO sqlalchemy.engine.Engine SELECT users.id, users.name, users.email, users.password_hash, users.created_at 
+[36mai_backend  |[0m FROM users 
+[36mai_backend  |[0m WHERE users.id = %(pk_1)s::INTEGER
+[36mai_backend  |[0m 2026-09-11 07:15:22,095 INFO sqlalchemy.engine.Engine [generated in 0.00028s] {'pk_1': 38}
+[36mai_backend  |[0m INFO:     172.20.0.1:38680 - "POST /auth/signup HTTP/1.1" 200 OK
+[36mai_backend  |[0m 2026-09-11 07:15:22,099 INFO sqlalchemy.engine.Engine ROLLBACK
+[36mai_backend  |[0m 2026-09-11 07:15:28,558 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:15:28,558 INFO sqlalchemy.engine.Engine SELECT users.id, users.name, users.email, users.password_hash, users.created_at 
+[36mai_backend  |[0m FROM users 
+[36mai_backend  |[0m WHERE users.email = %(email_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:15:28,558 INFO sqlalchemy.engine.Engine [cached since 7.036s ago] {'email_1': 'test@example.com'}
+[36mai_backend  |[0m INFO:     172.20.0.1:55142 - "POST /auth/login HTTP/1.1" 200 OK
+[36mai_backend  |[0m 2026-09-11 07:15:28,966 INFO sqlalchemy.engine.Engine ROLLBACK
+[36mai_backend  |[0m WARNING:  WatchFiles detected changes in 'app/api/endpoints/chat.py'. Reloading...
+[36mai_backend  |[0m INFO:     Shutting down
+[36mai_backend  |[0m INFO:     Waiting for application shutdown.
+[36mai_backend  |[0m INFO:     Application shutdown complete.
+[36mai_backend  |[0m INFO:     Finished server process [8]
+[36mai_backend  |[0m INFO:     Started server process [14]
+[36mai_backend  |[0m INFO:     Waiting for application startup.
+[36mai_backend  |[0m 2026-09-11 07:18:11,233 INFO sqlalchemy.engine.Engine select pg_catalog.version()
+[36mai_backend  |[0m 2026-09-11 07:18:11,233 INFO sqlalchemy.engine.Engine [raw sql] {}
+[36mai_backend  |[0m 2026-09-11 07:18:11,237 INFO sqlalchemy.engine.Engine select current_schema()
+[36mai_backend  |[0m 2026-09-11 07:18:11,237 INFO sqlalchemy.engine.Engine [raw sql] {}
+[36mai_backend  |[0m 2026-09-11 07:18:11,238 INFO sqlalchemy.engine.Engine show standard_conforming_strings
+[36mai_backend  |[0m 2026-09-11 07:18:11,238 INFO sqlalchemy.engine.Engine [raw sql] {}
+[36mai_backend  |[0m 2026-09-11 07:18:11,244 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:18:11,244 INFO sqlalchemy.engine.Engine SELECT 1
+[36mai_backend  |[0m 2026-09-11 07:18:11,244 INFO sqlalchemy.engine.Engine [generated in 0.00033s] {}
+[36mai_backend  |[0m 2026-09-11 07:18:11,246 INFO sqlalchemy.engine.Engine ROLLBACK
+[36mai_backend  |[0m ✅ Database connection successful!
+[36mai_backend  |[0m 2026-09-11 07:18:11,246 INFO sqlalchemy.engine.Engine BEGIN (implicit)
+[36mai_backend  |[0m 2026-09-11 07:18:11,256 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+[36mai_backend  |[0m FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+[36mai_backend  |[0m WHERE pg_catalog.pg_class.relname = %(table_name)s::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s::VARCHAR, %(param_2)s::VARCHAR, %(param_3)s::VARCHAR, %(param_4)s::VARCHAR, %(param_5)s::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:18:11,257 INFO sqlalchemy.engine.Engine [generated in 0.00125s] {'table_name': 'users', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+[36mai_backend  |[0m 2026-09-11 07:18:11,261 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+[36mai_backend  |[0m FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+[36mai_backend  |[0m WHERE pg_catalog.pg_class.relname = %(table_name)s::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s::VARCHAR, %(param_2)s::VARCHAR, %(param_3)s::VARCHAR, %(param_4)s::VARCHAR, %(param_5)s::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:18:11,261 INFO sqlalchemy.engine.Engine [cached since 0.005514s ago] {'table_name': 'conversations', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+[36mai_backend  |[0m 2026-09-11 07:18:11,265 INFO sqlalchemy.engine.Engine SELECT pg_catalog.pg_class.relname 
+[36mai_backend  |[0m FROM pg_catalog.pg_class JOIN pg_catalog.pg_namespace ON pg_catalog.pg_namespace.oid = pg_catalog.pg_class.relnamespace 
+[36mai_backend  |[0m WHERE pg_catalog.pg_class.relname = %(table_name)s::VARCHAR AND pg_catalog.pg_class.relkind = ANY (ARRAY[%(param_1)s::VARCHAR, %(param_2)s::VARCHAR, %(param_3)s::VARCHAR, %(param_4)s::VARCHAR, %(param_5)s::VARCHAR]) AND pg_catalog.pg_table_is_visible(pg_catalog.pg_class.oid) AND pg_catalog.pg_namespace.nspname != %(nspname_1)s::VARCHAR
+[36mai_backend  |[0m 2026-09-11 07:18:11,265 INFO sqlalchemy.engine.Engine [cached since 0.009486s ago] {'table_name': 'messages', 'param_1': 'r', 'param_2': 'p', 'param_3': 'f', 'param_4': 'v', 'param_5': 'm', 'nspname_1': 'pg_catalog'}
+[36mai_backend  |[0m 2026-09-11 07:18:11,267 INFO sqlalchemy.engine.Engine COMMIT
+[36mai_backend  |[0m INFO:     Application startup complete.
+[32mai_postgres |[0m 2026-09-11 07:18:29.942 UTC [1] LOG:  received fast shutdown request
+[32mai_postgres |[0m 2026-09-11 07:18:29.949 UTC [1] LOG:  aborting any active transactions
+[32mai_postgres |[0m 2026-09-11 07:18:29.949 UTC [408] FATAL:  terminating connection due to administrator command
+[32mai_postgres |[0m 2026-09-11 07:18:29.949 UTC [406] FATAL:  terminating connection due to administrator command
+[32mai_postgres |[0m 2026-09-11 07:18:29.949 UTC [409] FATAL:  terminating connection due to administrator command
+[32mai_postgres |[0m 2026-09-11 07:18:29.950 UTC [405] FATAL:  terminating connection due to administrator command
+[32mai_postgres |[0m 2026-09-11 07:18:29.954 UTC [407] FATAL:  terminating connection due to administrator command
+[32mai_postgres |[0m 2026-09-11 07:18:29.957 UTC [1] LOG:  background worker "logical replication launcher" (PID 32) exited with exit code 1
+[32mai_postgres |[0m 2026-09-11 07:18:29.960 UTC [27] LOG:  shutting down
+[32mai_postgres |[0m 2026-09-11 07:18:29.967 UTC [27] LOG:  checkpoint starting: shutdown immediate
+[32mai_postgres |[0m 2026-09-11 07:18:30.096 UTC [27] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.085 s, sync=0.015 s, total=0.136 s; sync files=8, longest=0.006 s, average=0.002 s; distance=2 kB, estimate=2 kB; lsn=0/19C7C60, redo lsn=0/19C7C60
+[32mai_postgres |[0m 2026-09-11 07:18:30.106 UTC [1] LOG:  database system is shut down
+[32mai_postgres exited with code 0
+[0m[36mai_backend  |[0m INFO:     Shutting down
+[36mai_backend  |[0m INFO:     Waiting for application shutdown.
+[36mai_backend  |[0m INFO:     Application shutdown complete.
+[36mai_backend  |[0m INFO:     Finished server process [14]
+[36mai_backend  |[0m INFO:     Stopping reloader process [1]
+[36mai_backend exited with code 0
+[0m[33mai_frontend exited with code 0
+[0m
