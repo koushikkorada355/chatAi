@@ -165,4 +165,4 @@ ai-chatbot/
 **Sai Koushik Korada** — AI Full Stack Engineer
 - GitHub: https://github.com/koushikkorada355
 - LinkedIn: https://www.linkedin.com/in/koushik-korada-02187a305/
-- Portfolio repo: `../Portfolio`
+- Portfolio repo: `koushikkorada.tech`
