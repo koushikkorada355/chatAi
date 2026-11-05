@@ -1,4 +1,5 @@
 import asyncio
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,12 +21,15 @@ from app.api.endpoints.documents import router as documents_router
 
 app = FastAPI()
 
+# Configure CORS origins. You can set `FRONTEND_URL` in the environment to allow a deployed frontend.
+frontend_origins = ["http://localhost:5173"]  # local dev
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    frontend_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173", # For local development
-        "https://chat-ai-chi-umber.vercel.app" # Replace with your actual Vercel URL!
-    ],
+    allow_origins=frontend_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

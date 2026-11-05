@@ -1,11 +1,9 @@
-version: '3.8'
-
 services:
   backend:
     build: ./backend
     container_name: ai_backend
     ports:
-      - "8000:8000"
+      - "8003:8000"
     volumes:
       - ./backend:/code
     env_file:
@@ -19,7 +17,7 @@ services:
     build: ./frontend
     container_name: ai_frontend
     ports:
-      - "5173:5173"
+      - "8081:5173"
     volumes:
       - ./frontend:/app
       - frontend_node_modules:/app/node_modules
@@ -34,7 +32,7 @@ services:
     env_file:
       - .env
     ports:
-      - "5433:5432"
+      - "5435:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
